@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+        <style>
+            body {
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background: #f1f1f1;
+            }
+    
+            canvas {
+                border: 1px solid #333;
+            }
+        </style>
+</head>
+
+<body>
+
+
+    <script>
+// Contoh dasar pembuatan objek 3D dengan p5.js
+function setup() {
+    // Membuat canvas 3D
+    createCanvas(400, 400, WEBGL);
+  }
+   
+  function draw() {
+    // Mengatur background
+    background(200);
+   
+    // Menambahkan pencahayaan
+    directionalLight(255, 255, 255, 0.5, 1, -0.5);
+    ambientLight(100);
+   
+    // Mengatur rotasi objek berdasarkan waktu
+    rotateX(frameCount * 0.01);
+    rotateY(frameCount * 0.01);
+   
+    // Menambahkan segitiga bentuk aneh
+    push();
+    fill(150, 0, 255); // Warna ungu
+    beginShape();
+    vertex(0, -50, 0);  // Titik atas segitiga
+    vertex(-50, 50, 0); // Titik kiri segitiga
+    vertex(50, 50, 0);  // Titik kanan segitiga
+    endShape(CLOSE);
+    
+    // Menambahkan sisi bawah segitiga untuk memberikan efek 3D
+    beginShape();
+    vertex(0, -50, 0);  // Titik atas segitiga
+    vertex(-50, 50, 0); // Titik kiri segitiga
+    vertex(0, 0, -50);  // Titik belakang kiri
+    endShape(CLOSE);
+    
+    beginShape();
+    vertex(0, -50, 0);  // Titik atas segitiga
+    vertex(50, 50, 0);  // Titik kanan segitiga
+    vertex(0, 0, -50);  // Titik belakang kanan
+    endShape(CLOSE);
+    
+    beginShape();
+    vertex(-50, 50, 0); // Titik kiri segitiga
+    vertex(50, 50, 0);  // Titik kanan segitiga
+    vertex(0, 0, -50);  // Titik belakang
+    endShape(CLOSE);
+    pop();
+    
+    // Menambahkan bola hitam
+    push();
+    translate(-100, 0, 0);
+    fill(0); // Warna hitam
+    sphere(20); // Membuat bola dengan radius 20
+    pop();
+    
+    push();
+    translate(100, 0, 0);
+    fill(0); // Warna hitam
+    sphere(20); // Membuat bola dengan radius 20
+    pop();
+    
+    push();
+    translate(0, -100, 0);
+    fill(0); // Warna hitam
+    sphere(20); // Membuat bola dengan radius 20
+    pop();
+    
+    push();
+    translate(0, 100, 0);
+    fill(0); // Warna hitam
+    sphere(20); // Membuat bola dengan radius 20
+    pop();
+  }
+    </script>
+</body>
+
+</html>
